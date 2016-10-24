@@ -1,7 +1,7 @@
 from scapy.all import *
 
 numPackets = 20
-timeout = 5
+timeout = 10
 
 # packets = sniff(count=numPackets)
 packets = sniff(timeout=timeout)
@@ -13,6 +13,14 @@ for x in range(0, len(packets)):
     srcport = packets[x][2].sport
     dstport = packets[x][2].dport
     print "Packet # " + str(x)
+
+    #determine protocol
+    if proto == 6:
+        print "Protocol: TCP"
+    elif proto == 17:
+        print "Protocol: UDP"
+    else:
+        print "Protocol: Unknown"
 
     # determine packet type
     if srcport == 80 or dstport == 80:
