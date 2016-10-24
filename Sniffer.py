@@ -1,26 +1,24 @@
 from scapy.all import *
 
 numPackets = 20
-timeout = 10
+timeout = 5
 
 # packets = sniff(count=numPackets)
 packets = sniff(timeout=timeout)
 
+i = 0
 sys.stdout = open("dump.txt", "w")
-for x in range(0, len(packets)):
+for x in packets:
     # extract relevant info
-    proto = packets[x][1].proto
-    srcport = packets[x][2].sport
-    dstport = packets[x][2].dport
-    print "Packet # " + str(x)
+    # proto = x[1].proto
 
-    #determine protocol
-    if proto == 6:
-        print "Protocol: TCP"
-    elif proto == 17:
-        print "Protocol: UDP"
+    srcport = x[2].sport
+    dstport = x[2].dport
+    print "Packet # " + str(i)
+    if(x[1].version == 6):
+        print x[1].sprintf("Protocol: %IPv6.nh%")
     else:
-        print "Protocol: Unknown"
+        print x[1].sprintf("Protocol: %IP.proto%")
 
     # determine packet type
     if srcport == 80 or dstport == 80:
@@ -33,11 +31,9 @@ for x in range(0, len(packets)):
         print "This is not a recognizable packet: \n"
 
     # print packet
-    packets[x].show()
-
+    x.show()
+    i+=1
     print "\n=================================\n"
 
 sys.stdout.close()
 sys.stdout = sys.__stdout__
-
-
