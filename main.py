@@ -1,6 +1,4 @@
 import getopt
-import os.path
-import sys
 
 from scapy.all import *
 

@@ -1,14 +1,16 @@
 from scapy.all import *
 
+
 def convertRaw(x):
     x[2].decode_payload_as(scapy.layers.dns.DNS)
     offset = 1
     if x[3].qdcount > 0:
-        x[2+offset].decode_payload_as(scapy.layers.dns.DNSQR)
+        x[2 + offset].decode_payload_as(scapy.layers.dns.DNSQR)
         offset += 1
     elif x[3].ancount > 0:
-        x[2+offset].decode_payload_as(scapy.layers.dns.DNSRR)
+        x[2 + offset].decode_payload_as(scapy.layers.dns.DNSRR)
         offset += 1
+
 
 def getType(value):
     if int(value) == 1:
@@ -27,6 +29,7 @@ def getType(value):
         return "PTR"
     if int(value) == 37:
         return "CERT"
+
 
 def dnsParser(packets, filename):
     sys.stdout = open(filename, "w")
