@@ -7,15 +7,8 @@ from scapy.all import *
 from HTMLReconstructor import html
 from dnsParser import dnsParser
 from search import findKeyword
+from sniff import sniff
 from snifferDump import snifferDump
-
-
-def sniff(time):
-    print "sniff " + time
-    packets = scapy.all.sniff(timeout=int(time))
-    packets.show()
-    wrpcap('dump.cap', packets)
-    return packets
 
 
 s = raw_input("Enter amount of time in seconds to sniff:")
