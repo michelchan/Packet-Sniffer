@@ -16,7 +16,7 @@ def parse():
     print "parse"
 
 
-def html():
+def html():    
     print "html"
 
 
@@ -39,17 +39,18 @@ opts, args = getopt.getopt(sys.argv[1:], 'o:v', ["parse",
                                                  ])
 
 for opt in opts:
-    if opt == "--parse":
+
+    if opt[0] == "--parse":
         filename = raw_input("Enter file name to write to:")
         snifferDump(packets, filename)
-    elif opt == "--search":
+    elif opt[0] == "--search":
         s = raw_input("Enter keyword or regex:")
         findKeyword(s)
-    elif opt == "--html":
+    elif opt[0] == "--html":
         html()
-    elif opt == "--dns":
+    elif opt[0] == "--dns":
         dns()
-    elif opt == "--help":
+    elif opt[0] == "--help":
         print "--parse: takes filename and parses packets according to type of packets" \
               "--search: takes filename and keyword/regex, outputs packets that contain the keyword/regex" \
               "--html: takes and outputs the html" \
