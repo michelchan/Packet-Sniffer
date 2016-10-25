@@ -2,6 +2,7 @@ from scapy.all import *
 import sys, getopt
 from search import findKeyword
 from snifferDump import snifferDump
+from HTMLReconstructor import html
 
 
 def sniff(time):
@@ -14,10 +15,6 @@ def sniff(time):
 
 def parse():
     print "parse"
-
-
-def html():    
-    print "html"
 
 
 def dns():
@@ -47,7 +44,7 @@ for opt in opts:
         s = raw_input("Enter keyword or regex:")
         findKeyword(s)
     elif opt[0] == "--html":
-        html()
+        html(packets)
     elif opt[0] == "--dns":
         dns()
     elif opt[0] == "--help":
