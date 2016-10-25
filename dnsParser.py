@@ -33,9 +33,11 @@ def dnsParser(packets, filename):
 
 sys.stdout = open("DNSdump.txt", "w")
 count = 20
-packets = sniff(filter="udp", timeout = 10)
-# packets.nsummary()
-# print "\n==========================\n"
+# packets = sniff(filter="udp", timeout=5)
+packets = rdpcap("packets.cap")
+wrpcap("programPackets.cap", packets)
+packets.show()
+print "\n==========================\n"
 
 i = 0
 for x in packets:
