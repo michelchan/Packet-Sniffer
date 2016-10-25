@@ -1,5 +1,13 @@
+from scapy.all import *
+import sys, getopt
+from search import findKeyword
+
+
 def sniff(time):
-    print "sniff"
+    print "sniff " + time
+    packets = scapy.all.sniff(timeout=int(time))
+    packets.show()
+    return packets
 
 def parse():
     print "parse"
@@ -11,8 +19,6 @@ def dns():
     print "dns"
 
 
-import sys, getopt
-from search import findKeyword
 
 
 opts, args = getopt.getopt(sys.argv[1:], 'o:v',["sniff",
@@ -26,7 +32,7 @@ for opt, arg in opts:
     if opt == "--sniff":
         s = raw_input("Enter amount of time in seconds to sniff:")
         if s.isdigit():
-            sniff(arg)
+            sniff(s)
         else:
             print "Must be a whole number"
     elif opt == "--parse":
