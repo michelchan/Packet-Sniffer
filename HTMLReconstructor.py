@@ -13,7 +13,6 @@ def html(packets):
                 endhost = host.index("\r")
 
                 fullhost = 'http://' + host[6:endhost] + load[4:hostindex-11];
-                print fullhost
 
                 last = fullhost.rindex('/')
                 filename = ""
