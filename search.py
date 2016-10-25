@@ -1,9 +1,7 @@
 import re
 
 
-def findKeyword(keyword):
-    file = 'dump.txt'
-
+def findKeyword(keyword, file):
     with open(file, 'r') as f:
         dump = f.readlines()
 
