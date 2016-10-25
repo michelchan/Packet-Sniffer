@@ -49,4 +49,7 @@ for opt in opts:
     elif opt == "--dns":
         dns()
     elif opt == "--help":
-        print "--parse: takes "
+        print "--parse: takes filename and parses packets according to type of packets" \
+              "--search: takes filename and keyword/regex, outputs packets that contain the keyword/regex" \
+              "--html: takes and outputs the html" \
+              "--dns: takes filename and outputs dns queries"
