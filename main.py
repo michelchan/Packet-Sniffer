@@ -27,6 +27,7 @@ def dns():
 s = raw_input("Enter amount of time in seconds to sniff:")
 if not s.isdigit():
     print "Must be a whole number"
+    sys.exit(1)
 
 packets = sniff(s)
 
