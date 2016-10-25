@@ -31,7 +31,7 @@ for opt in opts:
         snifferDump(packets, filename)
     elif opt[0] == "--search":
         s = raw_input("Enter keyword or regex:")
-        filename = raw_input("Enter file name to write to:")
+        filename = raw_input("Enter the parse file to read from:")
         if os.path.isfile(filename):
             snifferDump(packets, filename)
         findKeyword(s, filename)
